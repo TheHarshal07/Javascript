@@ -1,0 +1,26 @@
+<h3 id="apicall"></h3>
+
+<script type="text/javascript">
+const country = 'India'
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'edd3a63555msh796c89451c08478p1d5206jsnb8e25cba4b2b',
+		'X-RapidAPI-Host': 'covid-19-coronavirus-statistics.p.rapidapi.com'
+	}
+};
+
+fetch(`https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/total?country=${country}`, options)
+	.then(response => response.json())
+	.then(response => {
+	console.log(response)
+	const mydata = response.data.location
+	const mydata1 = response.data.confirmed
+	const mydata2 = response.data.deaths
+	document.getElementById('apicall').innerHTML = 
+	`Country :${mydata} 
+	Confirmed :${mydata1} 
+	Total deaths :${mydata2}`;
+	})
+	.catch(err => console.error(err));
+</script>
